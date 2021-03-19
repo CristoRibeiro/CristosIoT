@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for users/services/CreateSessionService.ts</title>
+    <title>Code coverage report for devices/services/CreateDeviceService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">users/services</a> CreateSessionService.ts</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">devices/services</a> CreateDeviceService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>44/44</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/50</span>
+                <span class='fraction'>44/44</span>
             </div>
         
             
@@ -101,13 +101,7 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -122,8 +116,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -131,82 +126,69 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { sign } from 'jsonwebtoken';
-import { injectable, inject } from 'tsyringe';
-import User from '@modules/users/infra/typeorm/entities/User';
-import authConfig from '@config/auth';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
-import IUserRepository from '../repositories/IUserRepository';
-import { IHashProvider } from '../provider/HashProvider/models/IHashProvider';
+import IDeviceRepository from '../repositories/IDevicesRepository';
+import Device from '../infra/typeorm/entities/device';
 &nbsp;
 interface IRequest {
-  email: string;
-  password: string;
+  name: string;
+  identifier: string;
+  description: string;
+  configuration: string;
 }
-interface IResponse {
-  user: User;
-  token: string;
-}
+&nbsp;
 @injectable()
-class CreateSessionService {
+class CreateDeviceService {
   public constructor(
-    @inject('UserRepository')
-    private ormRepository: IUserRepository,
-    @inject('HashProvider')
-    private hashProvider: IHashProvider,
+    @inject('DeviceRepository')
+    private ormRepository: IDeviceRepository,
   ) {}
 &nbsp;
-  public async execute({ email, password }: IRequest): Promise&lt;IResponse&gt; {
-    const messageIncorrectCombination = 'Incorrect combination password/email';
-    const user = await this.ormRepository.findByEmail(email);
+  public async execute({
+    name,
+    identifier,
+    description,
+    configuration,
+  }: IRequest): Promise&lt;Device&gt; {
+    const deviceExists = await this.ormRepository.findByIdentifier(identifier);
 &nbsp;
-    if (!user) {
-      throw new AppError(messageIncorrectCombination, 401);
+    if (deviceExists) {
+      throw new AppError(
+        'Já existe um dispositivo cadastrado com este identificador!',
+        409,
+      );
     }
-    const passwordCorrect = await this.hashProvider.compareHash(
-      password,
-      user.password,
-    );
-&nbsp;
-    if (!passwordCorrect) {
-      throw new AppError(messageIncorrectCombination, 401);
-    }
-    const { secret, expiresIn } = authConfig.jwt;
-&nbsp;
-    const token = sign({ user_name: user.name }, secret, {
-      subject: user.id,
-      expiresIn,
+    const device = await this.ormRepository.create({
+      name,
+      identifier,
+      description,
+      configuration,
     });
-    return { user, token };
+&nbsp;
+    return device;
   }
 }
-export default CreateSessionService;
+export default CreateDeviceService;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

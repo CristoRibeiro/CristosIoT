@@ -9,6 +9,12 @@ class UserTokenRepository implements IUserTokenRepository {
     this.repositoryOrm = getRepository(UserToken);
   }
 
+  findByToken(token: string): Promise<UserToken | undefined> {
+    const userToken = this.repositoryOrm.findOne({ where: token });
+
+    return userToken;
+  }
+
   public async generate(user_id: string): Promise<UserToken> {
     const userToken = this.repositoryOrm.create({ user_id });
 
@@ -17,4 +23,5 @@ class UserTokenRepository implements IUserTokenRepository {
     return userToken;
   }
 }
+
 export default UserTokenRepository;

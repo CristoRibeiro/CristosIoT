@@ -1,0 +1,33 @@
+App React Native
+	Testar se esta funcionando a notificação.
+	Exibir o status do controlador.
+	Exibir status da API
+	Configurar tempo
+	Configurar altura maxima para
+
+BackEnd
+  Cadastrar Devices
+	  cadastrar parametrizações dispositivo para enviar ao arduino OK
+
+  Enviar dados de configuração do dispositivo para o arduino OK
+
+  //Recebe instrução de teste do arduino n será implementado
+
+	Recebe notificação arduino
+	  Realiza chamada da api de notificacao
+    Armazena no banco a notificação
+
+
+
+	Arquitetura
+
+	Um arduino principal que terá uma placa wifi e um modulo bluetooth para conectar aos demais arduino.
+
+
+
+DispositivoController
+{
+  Create Dispositivo
+}
+
+CadastrarDispositivo
