@@ -4,7 +4,7 @@ import IDevicesCreateDTO from '@modules/devices/dtos/IDeviceCreateDTO';
 import Device from '@modules/devices/infra/typeorm/entities/device';
 import IDevicesRepository from '../IDevicesRepository';
 
-class DevicesRepository implements IDevicesRepository {
+class FakeDevicesRepository implements IDevicesRepository {
   private devices: Device[] = [];
 
   public async findByIdentifier(
@@ -39,4 +39,4 @@ class DevicesRepository implements IDevicesRepository {
     return this.devices;
   }
 }
-export default DevicesRepository;
+export default FakeDevicesRepository;

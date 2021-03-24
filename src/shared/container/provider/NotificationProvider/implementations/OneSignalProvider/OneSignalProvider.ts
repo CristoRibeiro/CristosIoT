@@ -12,10 +12,7 @@ class OneSignalProvider implements INotificationProvider {
 
   private options: IOptions;
 
-  public async sendNotification(
-    to: Array<string>,
-    body: string,
-  ): Promise<void> {
+  public async sendNotification(to: string, body: string): Promise<void> {
     const { settings } = config;
 
     this.headers = settings.sendNotificationConfig.headers;
@@ -23,7 +20,7 @@ class OneSignalProvider implements INotificationProvider {
     this.message = {
       app_id: settings.oneSignalAppID,
       contents: { pt: body },
-      include_player_ids: to,
+      include_player_ids: to.split(';'),
     };
 
     this.options = {
